@@ -1,0 +1,25 @@
+import React from 'react';
+import { addToDb, removeFromDb } from '../utilities/fakeDB';
+import './cosmetic.css'
+const Cosmetic = (props) => {
+    const { name, price, id } = props.cosmetic
+    const addToCart = (id) => {
+        addToDb(id)
+    }
+    const removeFromCart = id => {
+        removeFromDb(id)
+    }
+    // const addToCartWithParam = () => addToCart(id);
+    return (
+        <div className='product'>
+            <h2>Product: {name}</h2>
+            <p>only for: ${price}</p>
+            <p> <small>It has id: {id}</small></p>
+            {/* <button onClick={addToCartWithParam}>Add to cart</button> */}
+            <button onClick={() => addToCart(id)}>Add to cart</button>
+            <button onClick={() => removeFromCart(id)}>Remove</button>
+        </div>
+    );
+};
+
+export default Cosmetic;
